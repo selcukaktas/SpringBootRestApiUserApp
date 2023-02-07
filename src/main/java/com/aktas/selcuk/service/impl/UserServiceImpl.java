@@ -2,6 +2,7 @@ package com.aktas.selcuk.service.impl;
 
 import com.aktas.selcuk.dto.UserDto;
 import com.aktas.selcuk.entity.User1;
+import com.aktas.selcuk.exception.UserNotFound;
 import com.aktas.selcuk.repository.UserRepository;
 import com.aktas.selcuk.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService {
             UserDto userDto = modelMapper.map(user.get(), UserDto.class);
             return userDto;
         }
-        throw new IllegalArgumentException("User bulunamadı.");
+        throw new UserNotFound("User bulunamadı.");
     }
 
     @Override
